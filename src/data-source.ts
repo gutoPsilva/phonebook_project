@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm";
-import { Contact } from "./Entities/Contact";
+import Contact from "./Entities/Contact";
 
 const db = new DataSource({
   type: "mysql",
