@@ -7,6 +7,7 @@ const contactRepository = db.getRepository(Contact);
 
 class ContactRepository{
   contactRepository: Repository<Contact>;
+
   constructor(){
     this.contactRepository = db.getRepository(Contact);
   }
@@ -19,18 +20,28 @@ class ContactRepository{
     if (!req.body.descricao) req.body.descricao = "Contato sem descrição";
     if (!req.body.url_foto) req.body.descricao = "https://i.imgur.com/3y4uhoQ.jpg";
     if (!req.body.favorito) req.body.favorito = false;
-    await this.contactRepository.update(Number(req.params.id), req.body);
-    return await this.contactRepository.findOne(req.body.id);
+
+    const contact = await contactRepository.findOne({
+      where: {
+        id: +req.params.id
+      }
+    });
+
+    if(!contact) return null; // não existe contato com o ID fornecido para atualização.
+
+    const updatedContact = this.contactRepository.merge(contact, req.body);
+    await this.contactRepository.save(updatedContact);
+    return updatedContact;
   }
 
   async createContact(req: Request): Promise<Contact[]> {
-    const ah = contactRepository.create(req.body);
+    const newContact = contactRepository.create(req.body);
     if (!req.body.descricao) req.body.descricao = "Contato sem descrição";
     if (!req.body.url_foto) req.body.descricao = "https://i.imgur.com/3y4uhoQ.jpg";
     if (!req.body.favorito) req.body.favorito = false;
 
-    await contactRepository.save(ah);
-    return ah;
+    await contactRepository.save(newContact);
+    return newContact;
   }
 
   async deleteContact(req: Request): Promise<boolean> {
