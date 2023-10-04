@@ -9,10 +9,10 @@ class Contact implements IContact{
   @Column("varchar", { length: 50, nullable: false })
   nome: string;
 
-  @Column("varchar", { length: 11, nullable: false })
+  @Column("varchar", { length: 13, nullable: false })
   tel_prin: string;
 
-  @Column("varchar", { length: 11 })
+  @Column("varchar", { length: 13})
   tel_sec: string;
 
   @Column("varchar", { length: 50, default: "Contato sem descrição" })

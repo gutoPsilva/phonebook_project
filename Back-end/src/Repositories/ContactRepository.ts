@@ -22,7 +22,7 @@ class ContactRepository {
 
     // caso sejam fornecidos, verificar a validade desses dados para não estourar o limite do campo ou o tipo registrado no BD
     // se ao menos 1 não for válidos, a operação NÃO DEVE SER REALIZADA
-    if ((req.body.nome.length > 50 || req.body.tel_prin.length > 11 || req.body.tel_sec.length > 11 || req.body.descricao.length > 50 || req.body.url_foto.length > 60 || typeof req.body.favorito !== "boolean")) return null;
+    if ((req.body.nome.length > 50 || req.body.tel_prin.length > 13 || req.body.tel_sec.length > 13 || req.body.descricao.length > 50 || req.body.url_foto.length > 60 || typeof req.body.favorito !== "boolean")) return null;
 
     //  depois de validar todos os dados, posso destruturar pra inserir facilmente nos values
     const { nome, tel_prin, tel_sec, descricao, url_foto, favorito } = req.body;
@@ -70,7 +70,7 @@ class ContactRepository {
     // !favorito poderia resultar na negação de FALSE por exemplo, o que resultaria em um favorito = TRUE mesmo sendo fornecido FALSE
 
     // verificar se os NOVOS dados fornecidos não estouram o limite do campo
-    if (req.body.nome.length > 50 || req.body.tel_prin.length > 11 || req.body.tel_sec.length > 11 || req.body.descricao.length > 50 || req.body.url_foto.length > 60) return null; // nesse caso não há necessidade de verificar a validade do favorito pois na parte acima seu valor já é validado
+    if (req.body.nome.length > 50 || req.body.tel_prin.length > 13 || req.body.tel_sec.length > 13 || req.body.descricao.length > 50 || req.body.url_foto.length > 60) return null; // nesse caso não há necessidade de verificar a validade do favorito pois na parte acima seu valor já é validado
 
     // depois de validar todos os dados, posso desestruturar o objeto pra colocar facilmente no set
     const { nome, tel_prin, tel_sec, descricao, url_foto, favorito } = req.body;
