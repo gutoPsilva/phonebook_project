@@ -14,13 +14,13 @@ class Contact {
   @Column("varchar", { length: 11 })
   tel_sec: string;
 
-  @Column("varchar", { length: 50, nullable: false, default: "Contato sem descrição" })
+  @Column("varchar", { length: 50, default: "Contato sem descrição" })
   descricao: string;
 
-  @Column("varchar", { length: 60, nullable: false, default: "https://i.imgur.com/3y4uhoQ.jpg" })
+  @Column("varchar", { length: 60, default: "https://i.imgur.com/3y4uhoQ.jpg" })
   url_foto: string;
 
-  @Column("bool", { nullable: false, default: false })
+  @Column("bool", { default: false })
   favorito: boolean;
 }
 
