@@ -2,17 +2,16 @@ import Contact from "../Entities/Contact";
 import db from "../data-source";
 import { Request } from "express";
 import { Repository } from "typeorm";
-
-const contactRepository = db.getRepository(Contact);
+import IContact from "../interfaces/IContact";
 
 class ContactRepository {
-  contactRepository: Repository<Contact>;
+  contactRepository: Repository<IContact>;
 
   constructor() {
     this.contactRepository = db.getRepository(Contact);
   }
 
-  async createContact(req: Request): Promise<Contact | null> {
+  async createContact(req: Request): Promise<IContact | null> {
     if (!req.body.nome || !req.body.tel_prin) return null; // ambos DEVEM ser fornecidos para que o registro seja feito
 
     // valores padrão para cada propriedade caso não sejam fornecidos
@@ -23,7 +22,7 @@ class ContactRepository {
 
     // caso sejam fornecidos, verificar a validade desses dados para não estourar o limite do campo ou o tipo registrado no BD
     // se ao menos 1 não for válidos, a operação NÃO DEVE SER REALIZADA
-    if ((req.body.nome.length > 50, req.body.tel_prin.length > 11, req.body.tel_sec.length > 11, req.body.descricao.length > 50, req.body.url_foto.length > 60, typeof req.body.favorito !== "boolean")) return null;
+    if ((req.body.nome.length > 50 || req.body.tel_prin.length > 11 || req.body.tel_sec.length > 11 || req.body.descricao.length > 50 || req.body.url_foto.length > 60 || typeof req.body.favorito !== "boolean")) return null;
 
     //  depois de validar todos os dados, posso destruturar pra inserir facilmente nos values
     const { nome, tel_prin, tel_sec, descricao, url_foto, favorito } = req.body;
@@ -44,16 +43,16 @@ class ContactRepository {
       ])
       .execute();
 
-    const newContact = await contactRepository.find();
+    const newContact = await this.contactRepository.find();
     return newContact[newContact.length - 1]; // o último registro é sempre o último adicionado
   }
 
-  async getContacts(): Promise<Contact[]> {
-    return contactRepository.find();
+  async getContacts(): Promise<IContact[]> {
+    return this.contactRepository.find();
   }
 
-  async updateContact(req: Request): Promise<Contact | null> {
-    const contactToUpdate = await contactRepository.findOne({
+  async updateContact(req: Request): Promise<IContact | null> {
+    const contactToUpdate = await this.contactRepository.findOne({
       where: {
         id: Number(req.params.id),
       },
@@ -90,13 +89,13 @@ class ContactRepository {
       .where("id = :id", { id: req.params.id })
       .execute();
 
-    const updatedContact = await contactRepository.createQueryBuilder("contact").where("contact.id = :id", { id: req.params.id }).getOne();
+    const updatedContact = await this.contactRepository.createQueryBuilder("contact").where("contact.id = :id", { id: req.params.id }).getOne();
 
     return updatedContact; // retorna o contato após o update
   }
 
   async deleteContact(req: Request): Promise<boolean> {
-    const contactToDelete = await contactRepository.findOne({
+    const contactToDelete = await this.contactRepository.findOne({
       where: {
         id: Number(req.params.id),
       },
@@ -108,6 +107,6 @@ class ContactRepository {
 
     return true; // o contato foi removido da tabela
   }
-};
+}
 
 export default ContactRepository;

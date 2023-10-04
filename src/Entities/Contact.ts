@@ -1,7 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import IContact from "../interfaces/IContact";
 
 @Entity({ name: "contatos" }) // nome da tabela no BD
-class Contact {
+class Contact implements IContact{
   @PrimaryGeneratedColumn()
   id: number;
 
