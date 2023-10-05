@@ -9,6 +9,9 @@ export default {
       },
       colors: {
         "dk-stone": "#262221",
+        "foda": "#313338",
+        fundo: "#1C1C1C",
+
       },
     },
   },

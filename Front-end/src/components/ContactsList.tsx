@@ -8,8 +8,8 @@ export const ContactsList = () => {
 
   return (
     <main className="shadow-lg">
-      <div className="bg-stone-800 flex w-fit rounded-t-lg overflow-hidden">
-        <div className={"pl-4 pr-3 pt-2 transition duration-500 " + (allSelected ? "bg-stone-800" : "bg-dk-stone")}>
+      <div className="bg-foda flex w-fit rounded-t-lg overflow-hidden">
+        <div className={"pl-4 pr-3 pt-2 transition duration-500 " + (allSelected ? "bg-foda" : "bg-dk-stone")}>
           <button
             onClick={() => {
               setAllSelected(true);
@@ -17,7 +17,7 @@ export const ContactsList = () => {
             Todos os Contatos
           </button>
         </div>
-        <div className={"pl-3 pr-4 pt-2 transition duration-500 " + (allSelected ? "bg-dk-stone" : "bg-stone-800")}>
+        <div className={"pl-3 pr-4 pt-2 transition duration-500 " + (allSelected ? "bg-dk-stone" : "bg-foda")}>
           <button
             onClick={() => {
               setAllSelected(false);
@@ -26,7 +26,7 @@ export const ContactsList = () => {
           </button>
         </div>
       </div>
-      <div className="bg-stone-800 rounded-b-lg rounded-tr-lg p-6 min-h-[120px]">
+      <div className="bg-foda rounded-b-lg rounded-tr-lg p-6 min-h-[120px]">
         {/* Container da Lista */}
         <div className="flex flex-col items-center gap-6 w-full">
           {/* Depois de ter carregado os contatos ele gera as listas */}
