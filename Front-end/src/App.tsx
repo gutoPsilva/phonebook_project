@@ -60,7 +60,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-fundo text-white px-4 py-6 font-spartan flex flex-col items-center overflow-x-hidden">
+    <div className="min-h-screen bg-cz-escuro text-white px-4 py-6 font-spartan flex flex-col items-center overflow-x-hidden  font-medium">
       <div className="max-w-2xl w-full grid gap-4">
         {/* container geral */}
         <AppContext.Provider value={{ allContacts, setAllContacts, loadData, setModal, setEdit, edit, setIdToUpdate, updateContact }}>

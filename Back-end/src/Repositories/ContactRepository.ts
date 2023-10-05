@@ -17,7 +17,7 @@ class ContactRepository {
     // valores padrão para cada propriedade caso não sejam fornecidos
     if (!req.body.tel_sec) req.body.tel_sec = ""; // assuma o valor de uma string vazia (não existe tel secundário nesse caso)
     if (!req.body.descricao) req.body.descricao = "Contato sem descrição";
-    if (!req.body.url_foto) req.body.url_foto = "https://i.imgur.com/3y4uhoQ.jpg";
+    if (!req.body.url_foto) req.body.url_foto = "https://imgur.com/Gw40OZ7.png";
     if (!req.body.favorito) req.body.favorito = false;
 
     // caso sejam fornecidos, verificar a validade desses dados para não estourar o limite do campo ou o tipo registrado no BD

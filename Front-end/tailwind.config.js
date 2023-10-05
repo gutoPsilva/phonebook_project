@@ -8,10 +8,9 @@ export default {
         poppins: "'Poppins', sans-serif",
       },
       colors: {
-        "dk-stone": "#262221",
-        "foda": "#313338",
-        fundo: "#1C1C1C",
-
+        "dk-stone": "#232529",
+        "cz-claro": "#313338",
+        "cz-escuro": "#1C1C1C",
       },
     },
   },

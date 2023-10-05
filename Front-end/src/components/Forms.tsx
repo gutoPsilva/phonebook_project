@@ -1,14 +1,16 @@
 import { FormEvent, useState, useContext } from "react";
-import { GrClose } from "react-icons/gr";
+import { FaUserAlt } from "react-icons/fa";
+import { BsFillTelephoneFill, BsTelephonePlusFill, BsFillImageFill } from "react-icons/bs";
+import { BiMessageAltDetail } from "react-icons/bi";
 import IContact from "../interface/IContact";
 import { AppContext } from "../App";
 import axios from "axios";
 
 type IDProp = {
-  id : number|undefined,
-}
+  id: number | undefined;
+};
 
-export const Forms = (props:IDProp) => {
+export const Forms = (props: IDProp) => {
   const { setModal, loadData, edit, updateContact } = useContext(AppContext);
 
   const [formData, setFormData] = useState<IContact>({
@@ -18,7 +20,7 @@ export const Forms = (props:IDProp) => {
     tel_sec: "",
     descricao: "",
     url_foto: "",
-    favorito: true,
+    favorito: false,
   });
 
   const handleSubmit = async (e: FormEvent) => {
@@ -58,80 +60,96 @@ export const Forms = (props:IDProp) => {
   };
 
   return (
-    <div className="bg-foda md:text-xl rounded-lg relative p-2 shadow">
-      <button className="absolute top-3 right-3" onClick={() => setModal(false)}>
-        <GrClose className="filter-white" />
-      </button>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4 px-4 pb-6 pt-8">
-        <div className="flex gap-2 items-center">
-          <label htmlFor="nome">Nome{edit ? "" : "*"}:</label>
+    <div className="bg-cz-claro md:text-xl rounded-lg relative p-2 shadow-black shadow-lg">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-8 px-6 py-6">
+        <div className="flex gap-4 items-center">
+          <label htmlFor="nome">
+            <FaUserAlt size={24} />
+          </label>
           <input
-            className="flex-grow text-stone-900 px-2 py-1 placeholder:text-gray-500"
+            className="flex-grow text-white px-2 py-1 bg-transparent outline-none placeholder:text-gray-300 border-b-2 border-white"
             type="text"
             id="nome"
             name="nome"
             value={formData.nome}
             onChange={e => handleInput("nome", e.target.value)}
-            placeholder="Gustavo Pereira da Silva"
+            placeholder="Nome"
             {...(edit ? {} : { required: true })} // obrigatório somente no CREATE
             maxLength={50}
           />
         </div>
-        <div className="flex gap-2 items-center">
-          <label htmlFor="tel_prin">Telefone Principal{edit ? "" : "*"}:</label>
+        <div className="flex gap-4 items-center">
+          <label htmlFor="tel_prin">
+            <BsFillTelephoneFill size={24} />
+          </label>
           <input
-            className="flex-grow text-stone-900 px-2 py-1 placeholder:text-gray-500"
+            className="flex-grow text-white px-2 py-1 bg-transparent outline-none placeholder:text-gray-300 border-b-2 border-white"
             type="tel"
             id="tel_prin"
             name="tel_prin"
             value={formData.tel_prin}
             onChange={e => handleInput("tel_prin", e.target.value)}
-            placeholder="11 98910-9727"
+            placeholder="Telefone Prin. (ex: 11 98910-9727)"
             {...(edit ? {} : { required: true })} // obrigatório somente no CREATE
             maxLength={13}
           />
         </div>
-        <div className="flex gap-2 items-center">
-          <label htmlFor="tel_sec">Telefone Secundário:</label>
+        <div className="flex gap-4 items-center">
+          <label htmlFor="tel_sec">
+            <BsTelephonePlusFill size={24} />
+          </label>
           <input
-            className="flex-grow text-stone-900 px-2 py-1 placeholder:text-gray-500"
+            className="flex-grow text-white px-2 py-1 bg-transparent outline-none placeholder:text-gray-300 border-b-2 border-white/75"
             type="tel"
             id="tel_sec"
             name="tel_sec"
             value={formData.tel_sec}
             onChange={e => handleInput("tel_sec", e.target.value)}
-            placeholder="11 4002-8922"
+            placeholder="Telefone Sec. (ex: 11 4801-7265)"
             maxLength={13}
           />
         </div>
-        <div className="flex gap-2 items-center">
-          <label htmlFor="descricao">Descrição:</label>
+        <div className="flex gap-3 items-center">
+          <label htmlFor="descricao">
+            <BiMessageAltDetail size={28} />
+          </label>
           <textarea
-            className="resize-none text-stone-900 flex-grow px-2 py-1 placeholder:text-gray-500"
+            className="resize-none text-white flex-grow px-2 py-1 bg-transparent outline-none placeholder:text-gray-300 border-b-2 border-white max-h-[38px]"
             id="descricao"
             name="descricao"
             value={formData.descricao}
             onChange={e => handleInput("descricao", e.target.value)}
-            placeholder="Em Busca de um Trampo"
+            placeholder="Descrição do Contato"
             maxLength={50}
           />
         </div>
-        <div className="flex gap-2 items-center">
-          <label htmlFor="url_foto">URL da Foto:</label>
+        <div className="flex gap-4 items-center">
+          <label htmlFor="url_foto">
+            <BsFillImageFill size={24} />
+          </label>
           <input
-            className="flex-grow text-stone-900 px-2 py-1 placeholder:text-gray-500"
+            className="flex-grow text-white px-2 py-1 bg-transparent outline-none placeholder:text-gray-300 border-b-2 border-white"
             type="text"
             id="url_foto"
             name="url_foto"
             value={formData.url_foto}
             onChange={e => handleInput("url_foto", e.target.value)}
-            placeholder="https://i.imgur.com/3y4uhoQ.jpg"
+            placeholder="URL da foto"
             maxLength={60}
           />
         </div>
-        <button className="w-full bg-white text-stone-900 text-xl font-bold rounded" type="submit">
-          {edit ? "Editar Contato" : "Criar Contato"}
-        </button>
+        <div className="flex gap-6">
+          <button className="flex-grow bg-white text-cz-claro text-xl font-bold rounded p-2" type="submit">
+            {edit ? "Editar Contato" : "Criar Contato"}
+          </button>
+          <button
+            className="bg-white text-cz-claro text-xl font-bold rounded p-2 sm:px-10"
+            onClick={() => {
+              setModal(false);
+            }}>
+            Cancelar
+          </button>
+        </div>
       </form>
     </div>
   );

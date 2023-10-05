@@ -24,15 +24,15 @@ export const Contact = (props: IContact) => {
 
   return (
     <section className="w-full relative flex items-center">
-      <div className="rounded-full aspect-square w-20 overflow-hidden border-2 border-white flex items-center cursor-pointer" title={props.descricao}>
+      <div className="rounded-full aspect-square w-20 overflow-hidden border-2 border-white flex items-center cursor-pointer bg-white" title={props.descricao}>
         <img className="z-10" src={props.url_foto} alt="Contact picture" />
         <hr className="absolute bg-white h-[2px] w-full rounded border-none"></hr>
       </div>
       <article className="w-full grid grid-rows-2 pl-2 gap-2">
         {/* container dos textos e das opções do contato */}
         <div className="flex justify-between items-start gap-2">
-          <span className="break-all md:text-xl">{props.nome}</span> {/* nome do contato */}
-          <div className="flex flex-wrap gap-1 md:gap-3 items-center justify-center">
+          <span className="break-all sm:text-2xl font-medium">{props.nome}</span> {/* nome do contato */}
+          <div className="flex flex-wrap gap-1 sm:gap-3 items-center justify-center">
             <button
               onClick={() => {
                 updateContact(!props.favorito, props, props.id);
@@ -53,7 +53,7 @@ export const Contact = (props: IContact) => {
             </button>
           </div>
         </div>
-        <span className="break-all md:text-xl">
+        <span className="break-all sm:text-xl">
           {props.tel_prin}
           {props.tel_sec ? `, ${props.tel_sec}` : ""}
         </span>
