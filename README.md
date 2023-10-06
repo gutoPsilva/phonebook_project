@@ -66,24 +66,13 @@ Requisições para deletar algum contato devem utilizar o método `DELETE`, usan
 
 - Como `resposta`, a API retorna `TRUE` se conseguiu achar o contato e deleta-lo, ou `FALSE` se não conseguiu.
 
-
 ## Screenshots
 
 OBS: Esses números de telefone são totalmente fictícios com o intuito apenas de demonstrar o visual da aplicação, qualquer semelhança com a realidade é meramente coincidência.
 
 <div align="center">
-  <img src="./front-end/src/assets/screenshots/desktop.jpeg" alt="desktop screenshot"\>
-  <img src="./front-end/src/assets/screenshots/mobile.jpeg" alt="mobile screenshot" style="width: 375px"\>
-</div>
-
-
-## Screenshots
-
-OBS: Esses números de telefone são totalmente fictícios com o intuito apenas de demonstrar o visual da aplicação, qualquer semelhança com a realidade é meramente coincidência.
-
-<div align="center">
-  <img src="./front-end/src/assets/screenshots/desktop.jpeg" alt="desktop screenshot"\>
-  <img src="./front-end/src/assets/screenshots/mobile.jpeg" alt="mobile screenshot" style="width: 375px"\>
+  <img src="./Front-end/src/assets/screenshots/desktop.jpeg" alt="desktop screenshot"\>
+  <img src="./Front-end/src/assets/screenshots/mobile.jpeg" alt="mobile screenshot" style="width: 375px"\>
 </div>
 
 ## Principais Ferramentas Utilizadas
