@@ -28,7 +28,9 @@ Requisições para criar um novo contato devem utilizar o método `POST` tendo c
 
 - Os dados devem ser fornecidos através de um objeto seguindo o modelo acima, entretanto, o único valor que `NÃO` deve ser fornecido é o ID, pois na criação do contato ele já é atribuído automaticamente.
 
-- Toda request de criação de contato deve `OBRIGATORIAMENTE` fornecer ao menos o `NOME e o TELEFONE PRINCIPAL`, caso o resto não seja fornecido, a API atribui um valor padrão para cada propriedade `com exceção do telefone secundário`.
+- Toda request de criação de contato deve OBRIGATORIAMENTE fornecer ao menos o `NOME e o TELEFONE PRINCIPAL`, do contrário é retornado um erro 400 avisando sobre a ausência de dados ou dados inválidos. Caso o resto não seja fornecido, a API atribui um valor padrão para cada propriedade com exceção do telefone secundário.
+
+- Se qualquer propriedade estourar o limite ou o tipo do campo correspondente na tabela, é retornado um erro 400.
 
 - Como `resposta`, a API retorna o contato criado com todas as suas propriedades.
 
@@ -46,7 +48,9 @@ Requisições apenas para leitura devem utilizar o método `GET` no caminho base
 
 Requisições para atualizar algum contato devem utilizar o método `PUT`, usando o caminho base concatenando com o end point *`/update/id`*, resultando em: `http://localhost:3000/contacts/update/1` por exemplo.
 
-- O `ID` na URL é um parâmetro que deve ser correspondente ao contato que deseja-se atualizar. Caso o `ID` fornecido `NÃO` exista dentro do banco de dados, ele retorna um erro 400.
+- O `ID` na URL é um parâmetro que deve ser correspondente ao contato que deseja-se atualizar. Caso o ID fornecido `NÃO` exista dentro do banco de dados, ele retorna um erro 400 avisando que os dados são inválidos.
+
+- Se qualquer propriedade estourar o limite ou o tipo do campo correspondente na tabela, é retornado um erro 400.
 
 - Os dados fornecidos para atualização devem seguir o mesmo padrão do create, a diferença é que no update não é obrigatório fornecer algum dado. Caso o dado fornecido seja nulo, aquela propriedade `mantem o valor que já possuia anteriormente`.
 
@@ -72,7 +76,17 @@ OBS: Esses números de telefone são totalmente fictícios com o intuito apenas 
   <img src="./front-end/src/assets/screenshots/mobile.jpeg" alt="mobile screenshot" style="width: 375px"\>
 </div>
 
-## Ferramentas Utilizadas
+
+## Screenshots
+
+OBS: Esses números de telefone são totalmente fictícios com o intuito apenas de demonstrar o visual da aplicação, qualquer semelhança com a realidade é meramente coincidência.
+
+<div align="center">
+  <img src="./front-end/src/assets/screenshots/desktop.jpeg" alt="desktop screenshot"\>
+  <img src="./front-end/src/assets/screenshots/mobile.jpeg" alt="mobile screenshot" style="width: 375px"\>
+</div>
+
+## Principais Ferramentas Utilizadas
 
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
