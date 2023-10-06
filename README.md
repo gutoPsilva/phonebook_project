@@ -10,11 +10,11 @@ A API em questão foi desenvolvida para uma `aplicação simples de Agenda Telef
    {
       id: number,
       nome: string,
-      tel_prin: string;
-      tel_sec: string;
-      descricao: string;
-      url_foto: string;
-      favorito: boolean;
+      tel_prin: string,
+      tel_sec: string,
+      descricao: string,
+      url_foto: string,
+      favorito: boolean,
    }
 ```
 
@@ -61,6 +61,16 @@ Requisições para deletar algum contato devem utilizar o método `DELETE`, usan
 - O `ID` na URL é um parâmetro que deve ser correspondente ao contato que deseja-se deletar.
 
 - Como `resposta`, a API retorna `TRUE` se conseguiu achar o contato e deleta-lo, ou `FALSE` se não conseguiu.
+
+
+## Screenshots
+
+OBS: Esses números de telefone são totalmente fictícios com o intuito apenas de demonstrar o visual da aplicação, qualquer semelhança com a realidade é meramente coincidência.
+
+<div align="center">
+  <img src="./front-end/src/assets/screenshots/desktop.jpeg" alt="desktop screenshot"\>
+  <img src="./front-end/src/assets/screenshots/mobile.jpeg" alt="mobile screenshot" style="width: 375px"\>
+</div>
 
 ## Ferramentas Utilizadas
 

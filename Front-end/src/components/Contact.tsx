@@ -24,9 +24,9 @@ export const Contact = (props: IContact) => {
 
   return (
     <section className="w-full relative flex items-center">
-      <div className="rounded-full aspect-square w-20 overflow-hidden border-2 border-white flex items-center cursor-pointer bg-white" title={props.descricao}>
-        <img className="z-10" src={props.url_foto} alt="Contact picture" />
+      <div className="rounded-full aspect-square w-20 overflow-hidden border-2 border-white flex items-center bg-white" title={props.descricao}>
         <hr className="absolute bg-white h-[2px] w-full rounded border-none"></hr>
+        <img className="z-10 cursor-pointer" src={props.url_foto} alt="Contact picture" />
       </div>
       <article className="w-full grid grid-rows-2 pl-2 gap-2">
         {/* container dos textos e das opções do contato */}
